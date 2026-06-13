@@ -1,14 +1,19 @@
-import { experiences } from "../data/content";
+"use client";
+
+import { useI18n } from "../i18n";
 import Reveal from "./Reveal";
 
 export default function Experience() {
+  const { t } = useI18n();
+  const { experiences, ui } = t;
+
   return (
     <section id="experience" className="section">
       <div className="wrap">
         <div className="sec-head">
           <span className="idx">§04</span>
-          <h2 className="sec-title">Experience</h2>
-          <span className="label">On the job</span>
+          <h2 className="sec-title">{ui.sections.experience.title}</h2>
+          <span className="label">{ui.sections.experience.label}</span>
         </div>
 
         {experiences.map((x, i) => (
@@ -30,9 +35,9 @@ export default function Experience() {
                   ))}
                 </ul>
                 <div className="xp-tags">
-                  {x.tags.map((t) => (
-                    <span className="tag" key={t}>
-                      {t}
+                  {x.tags.map((tag) => (
+                    <span className="tag" key={tag}>
+                      {tag}
                     </span>
                   ))}
                 </div>

@@ -1,14 +1,19 @@
-import { about } from "../data/content";
+"use client";
+
+import { useI18n } from "../i18n";
 import Reveal from "./Reveal";
 
 export default function About() {
+  const { t } = useI18n();
+  const { about, ui } = t;
+
   return (
     <section id="about" className="section">
       <div className="wrap">
         <div className="sec-head">
           <span className="idx">§01</span>
-          <h2 className="sec-title">Profile</h2>
-          <span className="label">Who I am</span>
+          <h2 className="sec-title">{ui.sections.about.title}</h2>
+          <span className="label">{ui.sections.about.label}</span>
         </div>
 
         <div className="about-grid">

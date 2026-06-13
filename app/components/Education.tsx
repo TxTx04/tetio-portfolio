@@ -1,14 +1,19 @@
-import { education } from "../data/content";
+"use client";
+
+import { useI18n } from "../i18n";
 import Reveal from "./Reveal";
 
 export default function Education() {
+  const { t } = useI18n();
+  const { education, ui } = t;
+
   return (
     <section id="education" className="section section--tight">
       <div className="wrap">
         <div className="sec-head">
           <span className="idx">§05</span>
-          <h2 className="sec-title">Education</h2>
-          <span className="label">Academic path</span>
+          <h2 className="sec-title">{ui.sections.education.title}</h2>
+          <span className="label">{ui.sections.education.label}</span>
         </div>
 
         {education.map((e, i) => (

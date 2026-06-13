@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Fraunces, Hanken_Grotesk, IBM_Plex_Mono } from "next/font/google";
 import "./globals.css";
+import { I18nProvider } from "./i18n";
 
 const display = Fraunces({
   subsets: ["latin"],
@@ -93,7 +94,7 @@ export default function RootLayout({
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
         />
-        {children}
+        <I18nProvider>{children}</I18nProvider>
       </body>
     </html>
   );

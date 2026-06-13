@@ -1,14 +1,20 @@
-import { profile } from "../data/content";
+"use client";
+
+import { useI18n } from "../i18n";
 import { Github, Linkedin, Mail, Download, ArrowUpRight } from "./icons";
 
 export default function Footer() {
+  const { t } = useI18n();
+  const { profile, ui } = t;
   const year = new Date().getFullYear();
+
   return (
     <footer id="contact" className="section contact">
       <div className="wrap">
-        <div className="contact-kicker">§06 — Get in touch</div>
+        <div className="contact-kicker">{ui.footer.kicker}</div>
         <h2>
-          Let&apos;s build something <em>dependable.</em>
+          {ui.footer.headPre}
+          <em>{ui.footer.headEm}</em>
         </h2>
 
         <a className="contact-mail" href={`mailto:${profile.email}`}>
@@ -22,7 +28,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Github /> GitHub <ArrowUpRight />
+            <Github /> {ui.footer.github} <ArrowUpRight />
           </a>
           <a
             className="clink"
@@ -30,10 +36,10 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Linkedin /> LinkedIn <ArrowUpRight />
+            <Linkedin /> {ui.footer.linkedin} <ArrowUpRight />
           </a>
           <a className="clink" href={`mailto:${profile.email}`}>
-            <Mail /> Email
+            <Mail /> {ui.footer.email}
           </a>
           <a
             className="clink"
@@ -41,7 +47,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <Download /> Download CV
+            <Download /> {ui.footer.downloadCv}
           </a>
         </div>
 
@@ -49,7 +55,7 @@ export default function Footer() {
           <span>
             © {year} Tetio Tsague · {profile.location}
           </span>
-          <span>Designed &amp; built by Tetio Tsague · Next.js</span>
+          <span>{ui.footer.built}</span>
         </div>
       </div>
     </footer>

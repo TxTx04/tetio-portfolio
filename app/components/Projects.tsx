@@ -1,9 +1,15 @@
-import { projects, type Project } from "../data/content";
+"use client";
+
+import { useI18n } from "../i18n";
+import { type Project } from "../data/content";
 import Reveal from "./Reveal";
 import { Lock } from "./icons";
 
 function Card({ p, wide = false }: { p: Project; wide?: boolean }) {
-  const meta = [p.kind, p.role, p.year].filter(Boolean).join(" · ");
+  const { t } = useI18n();
+  const meta = [t.ui.work.kind[p.kind], p.role, p.year]
+    .filter(Boolean)
+    .join(" · ");
   return (
     <article className={`card ${wide ? "span2" : ""}`}>
       <div className="card-top">
@@ -25,7 +31,7 @@ function Card({ p, wide = false }: { p: Project; wide?: boolean }) {
         ))}
         {p.privateRepo && (
           <span className="lock">
-            <Lock /> Private · on request
+            <Lock /> {t.ui.work.privateBadge}
           </span>
         )}
       </div>
@@ -34,6 +40,8 @@ function Card({ p, wide = false }: { p: Project; wide?: boolean }) {
 }
 
 export default function Projects() {
+  const { t } = useI18n();
+  const { projects, ui } = t;
   const flagship = projects.find((p) => p.id === "radixa") ?? projects[0];
   const rest = projects.filter((p) => p.id !== flagship.id);
 
@@ -42,8 +50,10 @@ export default function Projects() {
       <div className="wrap">
         <div className="sec-head">
           <span className="idx">§03</span>
-          <h2 className="sec-title">Selected work</h2>
-          <span className="label">{projects.length} projects</span>
+          <h2 className="sec-title">{ui.sections.work.title}</h2>
+          <span className="label">
+            {projects.length} {ui.work.countWord}
+          </span>
         </div>
 
         <Reveal>

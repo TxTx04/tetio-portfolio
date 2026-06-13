@@ -1,9 +1,12 @@
-import { caseStudy } from "../data/content";
+"use client";
+
+import { useI18n } from "../i18n";
 import Reveal from "./Reveal";
 import { Lock } from "./icons";
 
 export default function CaseStudy() {
-  const c = caseStudy;
+  const { t } = useI18n();
+  const c = t.caseStudy;
   return (
     <section id="case" className="section case">
       <div className="wrap">
@@ -20,7 +23,9 @@ export default function CaseStudy() {
           <div className="pipeline">
             {c.pipeline.map((s) => (
               <div className="pstep" key={s.step}>
-                <div className="pnum">STEP {s.step}</div>
+                <div className="pnum">
+                  {t.ui.caseStudy.step} {s.step}
+                </div>
                 <h4>{s.title}</h4>
                 <p>{s.body}</p>
               </div>

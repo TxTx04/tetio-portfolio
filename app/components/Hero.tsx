@@ -1,8 +1,13 @@
+"use client";
+
 import Image from "next/image";
-import { profile } from "../data/content";
+import { useI18n } from "../i18n";
 import { ArrowDown, Download } from "./icons";
 
 export default function Hero() {
+  const { t } = useI18n();
+  const { profile, ui } = t;
+
   return (
     <section id="top" className="hero">
       <div className="wrap hero-grid">
@@ -19,7 +24,7 @@ export default function Hero() {
 
           <div className="hero-cta fu d5">
             <a className="btn btn-primary" href="#work">
-              View work <ArrowDown />
+              {ui.hero.viewWork} <ArrowDown />
             </a>
             <a
               className="btn btn-ghost"
@@ -27,28 +32,28 @@ export default function Hero() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              Download CV <Download />
+              {ui.hero.downloadCv} <Download />
             </a>
           </div>
 
           <div className="hero-meta fu d6">
             <div className="item">
-              <span className="k">Status</span>
+              <span className="k">{ui.hero.statusK}</span>
               <span className="v">
                 <span className="status-dot" aria-hidden />
-                Available Jul 2026
+                {ui.hero.statusV}
               </span>
             </div>
             <div className="item">
-              <span className="k">Based in</span>
+              <span className="k">{ui.hero.basedK}</span>
               <span className="v">{profile.location}</span>
             </div>
             <div className="item">
-              <span className="k">Core stack</span>
-              <span className="v">Java · Python · TypeScript</span>
+              <span className="k">{ui.hero.stackK}</span>
+              <span className="v">{ui.hero.stackV}</span>
             </div>
             <div className="item">
-              <span className="k">Contact</span>
+              <span className="k">{ui.hero.contactK}</span>
               <span className="v">{profile.email}</span>
             </div>
           </div>
